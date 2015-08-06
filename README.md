@@ -11,3 +11,7 @@ CONFIGURATION
 --------------
 
 In the configuration-window you are able to set the hotkeys that the program uses. Normally the best option would be to use the same hotkeys as your recording-software (e.g. Open Broadcaster Software or FRAPS use).
+
+INSTALLATION
+--------------
+Currently there is no release, however you can clone this repository and compile the program if you want! A release should be out shortly.
