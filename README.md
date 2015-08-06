@@ -1,4 +1,4 @@
-GamingRecorderAssistant (GRA)
+Gaming Recorder Assistant (GRA)
 ==============
 
 ![GRALOGO](http://i.imgur.com/K6JveDH.png)
