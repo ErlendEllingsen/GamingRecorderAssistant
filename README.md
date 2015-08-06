@@ -1,6 +1,8 @@
 GamingRecorderAssistant (GRA)
 ==============
 
+![GRALOGO](http://i.imgur.com/K6JveDH.png)
+
 A tool made primarily for YouTubers who focus on gaming-content. This tools allows you to track the time during recording a video. 
 Often you have a pre-set deadline you want to match. E.x. 20 minutes of content. This program will allow you to track your "breaks" (that you will remove post-editing),
 add marks (used for post-editing) and generally aswell as a stopwatch.
