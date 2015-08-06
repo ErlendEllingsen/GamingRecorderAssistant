@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GamingRecorderAssistant")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Allows you to track and manage the time used when recording videos.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Erlend Ellingsen")]
 [assembly: AssemblyProduct("GamingRecorderAssistant")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Erlend Ellingsen 2015")]
+[assembly: AssemblyTrademark("Erlend Ellingsen")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
