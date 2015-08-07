@@ -7,3 +7,6 @@ c:\users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\Ga
 c:\users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.csproj.GenerateResource.Cache
 c:\users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.exe
 c:\users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.pdb
+C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.frm_settings.resources
+C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Debug\Newtonsoft.Json.dll
+C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Debug\Newtonsoft.Json.xml
