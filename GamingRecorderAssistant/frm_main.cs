@@ -28,6 +28,10 @@ namespace GamingRecorderAssistant
             RegisterHotKey(Handle, 3, 0, (int)Keys.NumPad1);
             RegisterHotKey(Handle, 4, 0, (int)Keys.NumPad2);
 
+
+            TimeTracking.newProject();
+            
+            
         }
 
 
@@ -109,6 +113,14 @@ namespace GamingRecorderAssistant
             {
                 if (!la_status_break.Visible) la_status_break.Visible = true;
             }
+
+            //BLINKTIMER: DEADLINE
+            if (TimeTracking.currentDeadlineState == TimeTracking.deadlineStates.redblink || TimeTracking.currentDeadlineState == TimeTracking.deadlineStates.yellowblink)
+            {
+                la_status_deadline.Visible = (la_status_deadline.Visible ? false : true);
+            }
+      
+                
         }
 
         #endregion
@@ -116,19 +128,11 @@ namespace GamingRecorderAssistant
         #region GUI 
         private void menu_file_new_Click(object sender, EventArgs e)
         {
-            //Reset vars
-            TimeTracking.currentTrackingState = TimeTracking.timeTrackingStates.inactive;
-            TimeTracking.totalTimer = 0;
-            TimeTracking.breakingTimeAccumulated = 0;
-            TimeTracking.currentlyBreaking = false;
-            TimeTracking.currentBreak = null;
-            TimeTracking.previousBreaks = new List<timeTrackingBreak>();
-            TimeTracking.marks = new List<timeTrackingMark>();
+            TimeTracking.newProject();
+        }
 
-            //Reset vars for other classes
-            timeTrackingBreak.index = 0;
-            timeTrackingMark.index = 0;
-
+        public void resetGUI()
+        {
             //Reset GUI
             dgv_marks.Rows.Clear();
 
@@ -140,8 +144,8 @@ namespace GamingRecorderAssistant
             la_status_tracking.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             la_status_break.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             la_status_deadline.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-
         }
+
     #endregion
 
     private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -149,7 +153,31 @@ namespace GamingRecorderAssistant
 
         }
 
-       
+        //TRIGGERS
+        private void menu_file_save_Click(object sender, EventArgs e)
+        {
+            sfd_saveTracking.ShowDialog();
+        }
+
+        private void menu_file_load_Click(object sender, EventArgs e)
+        {
+            ofd_openTracking.ShowDialog();
+        }
+
+        //ACTUAL EVENTS
+        private void ofd_openTracking_FileOk(object sender, CancelEventArgs e)
+        {
+
+            string filePath = ofd_openTracking.FileName;
+            TimeTracking.openProject(filePath);
+
+        }
+
+        private void sfd_saveTracking_FileOk(object sender, CancelEventArgs e)
+        {
+            string filePath = sfd_saveTracking.FileName;
+            TimeTracking.saveProject(filePath);
+        }
     }
 
 

@@ -43,6 +43,7 @@
             this.la_status_deadline = new System.Windows.Forms.Label();
             this.menu_main = new System.Windows.Forms.MenuStrip();
             this.menu_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_file_new = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.la_breakTimer = new System.Windows.Forms.Label();
@@ -52,11 +53,17 @@
             this.tm_blinkTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgv_marks = new System.Windows.Forms.DataGridView();
-            this.menu_file_new = new System.Windows.Forms.ToolStripMenuItem();
             this.Nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Removed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.la_deadlineTimer = new System.Windows.Forms.Label();
+            this.menu_file_load = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_file_save = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_file_projectSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_file_programSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.ofd_openTracking = new System.Windows.Forms.OpenFileDialog();
+            this.sfd_saveTracking = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menu_main.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -160,10 +167,22 @@
             // menu_file
             // 
             this.menu_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_file_new});
+            this.menu_file_new,
+            this.menu_file_load,
+            this.menu_file_save,
+            this.menu_file_projectSettings,
+            this.menu_file_programSettings});
             this.menu_file.Name = "menu_file";
             this.menu_file.Size = new System.Drawing.Size(37, 20);
             this.menu_file.Text = "File";
+            // 
+            // menu_file_new
+            // 
+            this.menu_file_new.Name = "menu_file_new";
+            this.menu_file_new.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.menu_file_new.Size = new System.Drawing.Size(165, 22);
+            this.menu_file_new.Text = "New";
+            this.menu_file_new.Click += new System.EventHandler(this.menu_file_new_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -239,6 +258,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.la_deadlineTimer);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.la_episodeTimer);
@@ -277,14 +297,6 @@
             this.dgv_marks.Size = new System.Drawing.Size(794, 136);
             this.dgv_marks.TabIndex = 15;
             // 
-            // menu_file_new
-            // 
-            this.menu_file_new.Name = "menu_file_new";
-            this.menu_file_new.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.menu_file_new.Size = new System.Drawing.Size(152, 22);
-            this.menu_file_new.Text = "New";
-            this.menu_file_new.Click += new System.EventHandler(this.menu_file_new_Click);
-            // 
             // Nr
             // 
             this.Nr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -320,6 +332,56 @@
             this.Removed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Removed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // la_deadlineTimer
+            // 
+            this.la_deadlineTimer.AutoSize = true;
+            this.la_deadlineTimer.BackColor = System.Drawing.Color.Transparent;
+            this.la_deadlineTimer.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.la_deadlineTimer.ForeColor = System.Drawing.Color.Gray;
+            this.la_deadlineTimer.Location = new System.Drawing.Point(515, 83);
+            this.la_deadlineTimer.Name = "la_deadlineTimer";
+            this.la_deadlineTimer.Size = new System.Drawing.Size(63, 15);
+            this.la_deadlineTimer.TabIndex = 14;
+            this.la_deadlineTimer.Text = "00:00:00";
+            // 
+            // menu_file_load
+            // 
+            this.menu_file_load.Name = "menu_file_load";
+            this.menu_file_load.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.menu_file_load.Size = new System.Drawing.Size(165, 22);
+            this.menu_file_load.Text = "Open";
+            this.menu_file_load.Click += new System.EventHandler(this.menu_file_load_Click);
+            // 
+            // menu_file_save
+            // 
+            this.menu_file_save.Name = "menu_file_save";
+            this.menu_file_save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menu_file_save.Size = new System.Drawing.Size(165, 22);
+            this.menu_file_save.Text = "Save";
+            this.menu_file_save.Click += new System.EventHandler(this.menu_file_save_Click);
+            // 
+            // menu_file_projectSettings
+            // 
+            this.menu_file_projectSettings.Name = "menu_file_projectSettings";
+            this.menu_file_projectSettings.Size = new System.Drawing.Size(165, 22);
+            this.menu_file_projectSettings.Text = "Project Settings";
+            // 
+            // menu_file_programSettings
+            // 
+            this.menu_file_programSettings.Name = "menu_file_programSettings";
+            this.menu_file_programSettings.Size = new System.Drawing.Size(165, 22);
+            this.menu_file_programSettings.Text = "Program Options";
+            // 
+            // ofd_openTracking
+            // 
+            this.ofd_openTracking.Filter = "GRA Files|*.gra";
+            this.ofd_openTracking.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_openTracking_FileOk);
+            // 
+            // sfd_saveTracking
+            // 
+            this.sfd_saveTracking.Filter = "GRA Files|*.gra";
+            this.sfd_saveTracking.FileOk += new System.ComponentModel.CancelEventHandler(this.sfd_saveTracking_FileOk);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,8 +395,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu_main;
             this.Name = "frm_main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GRA - Gaming Recording Assistant";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_main_FormClosing);
             this.Load += new System.EventHandler(this.frm_main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -373,6 +435,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Removed;
+        public System.Windows.Forms.Label la_deadlineTimer;
+        private System.Windows.Forms.ToolStripMenuItem menu_file_load;
+        private System.Windows.Forms.ToolStripMenuItem menu_file_save;
+        private System.Windows.Forms.ToolStripMenuItem menu_file_projectSettings;
+        private System.Windows.Forms.ToolStripMenuItem menu_file_programSettings;
+        private System.Windows.Forms.OpenFileDialog ofd_openTracking;
+        private System.Windows.Forms.SaveFileDialog sfd_saveTracking;
     }
 }
 
