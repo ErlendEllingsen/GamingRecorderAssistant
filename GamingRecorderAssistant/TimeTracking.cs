@@ -90,13 +90,26 @@ namespace GamingRecorderAssistant
             marks = new List<timeTrackingMark>();
             currentDeadlineState = deadlineStates.normal;
 
+            mainInstance.dgv_marks.Rows.Clear();
+
             //Reset vars for other classes
             timeTrackingBreak.index = 0;
             timeTrackingMark.index = 0;
 
 
-            //Reset timers
+            //Reset timers and vars
             mainInstance.timer_tracker.Enabled = false;
+            mainInstance.la_totalTimer.Text = "00:00:00";
+            mainInstance.la_episodeTimer.Text = "00:00:00";
+            mainInstance.la_breakTimer.Text = "00:00:00";
+            mainInstance.la_deadlineTimer.Text = "00:00:00";
+
+            //Set colors to normal.
+            mainInstance.la_status_tracking.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            mainInstance.la_status_inactive.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            mainInstance.la_status_break.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            mainInstance.la_status_deadline.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+
 
             //SHOW Settings form
             settingsInstance = new frm_settings();
@@ -124,6 +137,12 @@ namespace GamingRecorderAssistant
 
         public static void openProject(string openPath)
         {
+
+            //CLEAR VARS PRE_LOAD
+            //Clear the breaks and marks.
+            mainInstance.dgv_marks.Rows.Clear();
+
+
             //Get the config file from the path
             string configContent = "";
             using (StreamReader sr = new StreamReader(openPath))
@@ -151,7 +170,8 @@ namespace GamingRecorderAssistant
 
             mainInstance.la_totalTimer.Text = timeVisualized.Item1 + ":" + timeVisualized.Item2 + ":" + timeVisualized.Item3;
             mainInstance.la_episodeTimer.Text = episodeTimeVisualized.Item1 + ":" + episodeTimeVisualized.Item2 + ":" + episodeTimeVisualized.Item3;
-            
+
+         
             //Check for deadlinetimer
             if (projectConfig.deadline)
             {

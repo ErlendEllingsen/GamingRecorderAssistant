@@ -45,7 +45,7 @@
             this.menu_file = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_file_new = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_help_about = new System.Windows.Forms.ToolStripMenuItem();
             this.la_breakTimer = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -187,16 +187,17 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.menu_help_about});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // menu_help_about
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.menu_help_about.Name = "menu_help_about";
+            this.menu_help_about.Size = new System.Drawing.Size(152, 22);
+            this.menu_help_about.Text = "About";
+            this.menu_help_about.Click += new System.EventHandler(this.menu_help_about_Click);
             // 
             // la_breakTimer
             // 
@@ -422,7 +423,7 @@
         private System.Windows.Forms.MenuStrip menu_main;
         private System.Windows.Forms.ToolStripMenuItem menu_file;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_help_about;
         public System.Windows.Forms.Label la_breakTimer;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;

@@ -14,6 +14,7 @@ namespace GamingRecorderAssistant
     public partial class frm_main : Form
     {
 
+        public frm_about aboutInst = null;
         
 
         public frm_main()
@@ -177,6 +178,12 @@ namespace GamingRecorderAssistant
         {
             string filePath = sfd_saveTracking.FileName;
             TimeTracking.saveProject(filePath);
+        }
+
+        private void menu_help_about_Click(object sender, EventArgs e)
+        {
+            aboutInst = new frm_about();
+            aboutInst.Show();
         }
     }
 
