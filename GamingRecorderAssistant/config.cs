@@ -14,8 +14,13 @@ namespace GamingRecorderAssistant
 
         #region Config vars
 
+        //DEADLINE
         public bool deadline = false;
         public int deadlineTimer = 0;
+
+        //PRECUT
+        public bool precutFromStart = true; //fromStart tells if data is cut form start or end of project.
+        public int precutTimer = 0;
 
         public int totalTimer = 0;
         //Breaking vars

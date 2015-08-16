@@ -38,7 +38,6 @@
             this.la_status_inactive = new System.Windows.Forms.Label();
             this.la_status_tracking = new System.Windows.Forms.Label();
             this.la_status_break = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer_tracker = new System.Windows.Forms.Timer(this.components);
             this.la_status_deadline = new System.Windows.Forms.Label();
             this.menu_main = new System.Windows.Forms.MenuStrip();
@@ -67,10 +66,11 @@
             this.menu_sep_file = new System.Windows.Forms.ToolStripSeparator();
             this.menu_sep_precut = new System.Windows.Forms.ToolStripSeparator();
             this.menu_precut_set = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu_main.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_marks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // la_episodeTimer
@@ -129,16 +129,6 @@
             this.la_status_break.Size = new System.Drawing.Size(107, 32);
             this.la_status_break.TabIndex = 5;
             this.la_status_break.Text = "BREAK";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GamingRecorderAssistant.Properties.Resources.gra_logo_526;
-            this.pictureBox1.Location = new System.Drawing.Point(680, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(111, 111);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // timer_tracker
             // 
@@ -211,9 +201,11 @@
             this.menu_file_projectSettings.Name = "menu_file_projectSettings";
             this.menu_file_projectSettings.Size = new System.Drawing.Size(165, 22);
             this.menu_file_projectSettings.Text = "Project Settings";
+            this.menu_file_projectSettings.Click += new System.EventHandler(this.menu_file_projectSettings_Click);
             // 
             // menu_file_programSettings
             // 
+            this.menu_file_programSettings.Enabled = false;
             this.menu_file_programSettings.Name = "menu_file_programSettings";
             this.menu_file_programSettings.Size = new System.Drawing.Size(165, 22);
             this.menu_file_programSettings.Text = "Program Options";
@@ -229,7 +221,7 @@
             // menu_help_about
             // 
             this.menu_help_about.Name = "menu_help_about";
-            this.menu_help_about.Size = new System.Drawing.Size(152, 22);
+            this.menu_help_about.Size = new System.Drawing.Size(107, 22);
             this.menu_help_about.Text = "About";
             this.menu_help_about.Click += new System.EventHandler(this.menu_help_about_Click);
             // 
@@ -404,6 +396,17 @@
             this.menu_precut_set.Name = "menu_precut_set";
             this.menu_precut_set.Size = new System.Drawing.Size(165, 22);
             this.menu_precut_set.Text = "Set pre-cut";
+            this.menu_precut_set.Click += new System.EventHandler(this.menu_precut_set_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GamingRecorderAssistant.Properties.Resources.gra_logo_526;
+            this.pictureBox1.Location = new System.Drawing.Point(680, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 111);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // frm_main
             // 
@@ -422,12 +425,12 @@
             this.Text = "GRA - Gaming Recording Assistant";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_main_FormClosing);
             this.Load += new System.EventHandler(this.frm_main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menu_main.ResumeLayout(false);
             this.menu_main.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_marks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

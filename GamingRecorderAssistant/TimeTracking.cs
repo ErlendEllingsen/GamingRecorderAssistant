@@ -81,6 +81,8 @@ namespace GamingRecorderAssistant
         public static void newProject()
         {
             //Reset vars
+            TimeTracking.projectConfig = null;
+
             currentTrackingState = timeTrackingStates.inactive;
             totalTimer = 0;
             breakingTimeAccumulated = 0;
@@ -179,16 +181,18 @@ namespace GamingRecorderAssistant
                 mainInstance.la_deadlineTimer.Text = deadlineTimeVisualized.Item1 + ":" + deadlineTimeVisualized.Item2 + ":" + deadlineTimeVisualized.Item3;
             }
 
-            
+            configLoaded();
         }
 
         public static void configLoaded()
         {
+
+            //Visualzie vars
             Tuple<string, string, string> deadlineVisualized = timeVisualiser(projectConfig.deadlineTimer);
             mainInstance.la_deadlineTimer.Text = deadlineVisualized.Item1 + ":" + deadlineVisualized.Item2 + ":" + deadlineVisualized.Item3;
-            
 
-           
+            //Re-draw items
+            TimeTracking.redrawMarks();
 
         }
         #endregion
@@ -333,6 +337,21 @@ namespace GamingRecorderAssistant
 
         #endregion
 
+        #region GUI Vars
+        public static void redrawMarks()
+        {
+            //Empty the marks
+            mainInstance.dgv_marks.Rows.Clear();
+
+            //Loop through and draw
+            foreach(timeTrackingMark currentMark in TimeTracking.marks)
+            {
+                currentMark.draw();
+            }
+
+
+        }
+        #endregion
 
         #endregion
     }
@@ -384,11 +403,34 @@ namespace GamingRecorderAssistant
             this.reason = reason;
             this.timeStamp = markTimeVisualized.Item1 + ":" + markTimeVisualized.Item2 + ":" + markTimeVisualized.Item3;
 
-
-
-
-            TimeTracking.mainInstance.dgv_marks.Rows.Add(Convert.ToString(this.localIndex), this.timeStamp, this.reason);
+            this.draw();
             TimeTracking.marks.Add(this);
+
+        }
+
+        public void draw()
+        {
+            if (TimeTracking.projectConfig == null) return;
+
+            //Calculate PRECUT!
+            string drawTime = this.timeStamp;
+            if (TimeTracking.projectConfig.precutTimer > 0)
+            {
+                int adjustTime = TimeTracking.projectConfig.precutTimer;
+                if (!TimeTracking.projectConfig.precutFromStart) adjustTime *= (-1);
+
+                //Precuttimer is active
+                int newTimeValue = this.time + adjustTime;
+
+                
+
+                //Visualize new time
+                Tuple<string, string, string> markTimeVisualized = TimeTracking.timeVisualiser(newTimeValue);
+                drawTime = markTimeVisualized.Item1 + ":" + markTimeVisualized.Item2 + ":" + markTimeVisualized.Item3;
+            }
+
+            TimeTracking.mainInstance.dgv_marks.Rows.Add(Convert.ToString(this.localIndex), drawTime, this.reason);
+            
         }
 
        

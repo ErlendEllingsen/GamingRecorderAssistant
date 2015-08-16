@@ -185,6 +185,25 @@ namespace GamingRecorderAssistant
             aboutInst = new frm_about();
             aboutInst.Show();
         }
+
+        private void menu_file_projectSettings_Click(object sender, EventArgs e)
+        {
+            if (TimeTracking.settingsInstance != null && TimeTracking.settingsInstance.Visible)
+            {
+                TimeTracking.settingsInstance.Close();
+            }
+
+            TimeTracking.settingsInstance = new frm_settings();
+            TimeTracking.settingsInstance.Show();
+
+
+
+        }
+
+        private void menu_precut_set_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
