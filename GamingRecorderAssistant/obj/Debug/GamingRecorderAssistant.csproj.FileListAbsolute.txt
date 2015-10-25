@@ -10,3 +10,4 @@ C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\Ga
 C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Debug\Newtonsoft.Json.dll
 C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Debug\Newtonsoft.Json.xml
 C:\Users\erlend\documents\visual studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.frm_about.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Debug\GamingRecorderAssistant.csprojResolveAssemblyReference.cache
