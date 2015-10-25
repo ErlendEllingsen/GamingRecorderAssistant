@@ -174,6 +174,10 @@ namespace GamingRecorderAssistant
             int episodeTimer = (totalTimer - breakingTimeAccumulated);
             if (currentlyBreaking) episodeTimer -= (totalTimer - currentBreak.totTimeStart);
 
+            //Remove precut from timers
+            totalTimer -= projectConfig.precutTimer;
+            episodeTimer -= projectConfig.precutTimer;
+
             Tuple<string, string, string> timeVisualized = timeVisualiser(totalTimer);
             Tuple<string, string, string> episodeTimeVisualized= timeVisualiser(episodeTimer);
 
@@ -194,7 +198,22 @@ namespace GamingRecorderAssistant
         public static void configLoaded()
         {
 
-            //Visualzie vars
+            //Visualize vars
+            //Remove precut from timers
+            int totalTimer = TimeTracking.totalTimer;
+            int episodeTimer = (totalTimer - TimeTracking.breakingTimeAccumulated);
+            if (TimeTracking.currentlyBreaking) episodeTimer -= (totalTimer - TimeTracking.currentBreak.totTimeStart);
+
+            //Remove precut from timers
+            totalTimer -= projectConfig.precutTimer;
+            episodeTimer -= projectConfig.precutTimer;
+
+            Tuple<string, string, string> timeVisualized = timeVisualiser(totalTimer);
+            Tuple<string, string, string> episodeTimeVisualized = timeVisualiser(episodeTimer);
+
+            mainInstance.la_totalTimer.Text = timeVisualized.Item1 + ":" + timeVisualized.Item2 + ":" + timeVisualized.Item3;
+            mainInstance.la_episodeTimer.Text = episodeTimeVisualized.Item1 + ":" + episodeTimeVisualized.Item2 + ":" + episodeTimeVisualized.Item3;
+
             Tuple<string, string, string> deadlineVisualized = timeVisualiser(projectConfig.deadlineTimer);
             mainInstance.la_deadlineTimer.Text = deadlineVisualized.Item1 + ":" + deadlineVisualized.Item2 + ":" + deadlineVisualized.Item3;
 
