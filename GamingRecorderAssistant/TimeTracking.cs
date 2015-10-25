@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,11 +39,14 @@ namespace GamingRecorderAssistant
 
         //Current tracking tick
         public static int totalTimer = 0;
+
         //Breaking vars
         public static int breakingTimeAccumulated = 0;
         public static bool currentlyBreaking = false;
         public static timeTrackingBreak currentBreak = null;
         public static List<timeTrackingBreak> previousBreaks = new List<timeTrackingBreak>();
+        public static int breakingTimeRemoved = 0; //Dynamicly updated for break removals.
+
         //Mark vars
         public static List<timeTrackingMark> marks = new List<timeTrackingMark>();
 
@@ -308,7 +312,10 @@ namespace GamingRecorderAssistant
                 currentBreak = newBreak;
 
                 //Add mark (break start)
-                timeTrackingMark newMark = new timeTrackingMark(totalTimer, "Break #" + Convert.ToString(newBreak.breakIndex) + " started");
+                timeTrackingMark newMark = new timeTrackingMark(totalTimer, "Break #" + Convert.ToString(newBreak.breakIndex) + " started", true);
+                currentBreak.startMark = newMark.actualIndex;
+                newMark.associatedBreak = newBreak;
+                
             }
 
             currentlyBreaking = true;
@@ -325,7 +332,9 @@ namespace GamingRecorderAssistant
 
                 //Add mark (break end)
                 timeTrackingMark newMark = new timeTrackingMark(totalTimer, "Break #" + Convert.ToString(currentBreak.breakIndex) + " ended");
-
+                currentBreak.endMark = newMark.actualIndex;
+                newMark.associatedBreak = currentBreak;
+                
                 //Reset currentbreak
                 currentBreak = null;
             }
@@ -344,7 +353,8 @@ namespace GamingRecorderAssistant
             mainInstance.dgv_marks.Rows.Clear();
 
             //Loop through and draw
-            foreach(timeTrackingMark currentMark in TimeTracking.marks)
+            TimeTracking.breakingTimeRemoved = 0;
+            foreach (timeTrackingMark currentMark in TimeTracking.marks)
             {
                 currentMark.draw();
             }
@@ -365,6 +375,9 @@ namespace GamingRecorderAssistant
         public int totTimeStart = 0;
         public int totTimeEnd = 0;
 
+        //Optimal: directly use objects, but due to serialization issues (config) it's better to deal with indexes.
+        public int startMark = -1;
+        public int endMark = -1;
 
         public timeTrackingBreak()
         {
@@ -385,25 +398,31 @@ namespace GamingRecorderAssistant
     public class timeTrackingMark
     {
 
-
         public static int index = 0;
 
         public int localIndex = 0;
+        public int actualIndex = 0;
         public int time = 0;
         public string timeStamp = "";
         public string reason = "";
+        public bool removed = false; 
 
-        public timeTrackingMark(int time, string reason = "N/A")
+        public bool isBreakStart = false;
+        public timeTrackingBreak associatedBreak = null;
+
+        public timeTrackingMark(int time, string reason = "N/A", bool isBreakStart = false)
         {
             timeTrackingMark.index++;
             Tuple<string, string, string> markTimeVisualized = TimeTracking.timeVisualiser(time);
 
             this.localIndex = timeTrackingMark.index;
+            this.actualIndex = this.localIndex - 1;
             this.time = time;
             this.reason = reason;
             this.timeStamp = markTimeVisualized.Item1 + ":" + markTimeVisualized.Item2 + ":" + markTimeVisualized.Item3;
-
+            this.isBreakStart = isBreakStart;
             this.draw();
+            
             TimeTracking.marks.Add(this);
 
         }
@@ -412,27 +431,56 @@ namespace GamingRecorderAssistant
         {
             if (TimeTracking.projectConfig == null) return;
 
+            //Update time and timestamp based on breakingTimeRemoved
+            int calculatedTime = (this.time - TimeTracking.breakingTimeRemoved);
+            Tuple<string, string, string> markTimeVisualized = TimeTracking.timeVisualiser(calculatedTime);
+            string drawTime = markTimeVisualized.Item1 + ":" + markTimeVisualized.Item2 + ":" + markTimeVisualized.Item3;
+
             //Calculate PRECUT!
-            string drawTime = this.timeStamp;
             if (TimeTracking.projectConfig.precutTimer > 0)
             {
                 int adjustTime = TimeTracking.projectConfig.precutTimer;
-                if (!TimeTracking.projectConfig.precutFromStart) adjustTime *= (-1);
+                if (TimeTracking.projectConfig.precutFromStart) adjustTime *= (-1);
 
                 //Precuttimer is active
-                int newTimeValue = this.time + adjustTime;
+                int newTimeValue = calculatedTime + adjustTime;
 
                 
 
                 //Visualize new time
-                Tuple<string, string, string> markTimeVisualized = TimeTracking.timeVisualiser(newTimeValue);
+                markTimeVisualized = TimeTracking.timeVisualiser(newTimeValue);
                 drawTime = markTimeVisualized.Item1 + ":" + markTimeVisualized.Item2 + ":" + markTimeVisualized.Item3;
             }
 
             TimeTracking.mainInstance.dgv_marks.Rows.Add(Convert.ToString(this.localIndex), drawTime, this.reason);
-            
+
+            //If break end, disable the cell click box. (We only want to be able to click the box on break start).
+            if (!this.isBreakStart)
+            {
+                DataGridViewCell cell = TimeTracking.mainInstance.dgv_marks.Rows[TimeTracking.mainInstance.dgv_marks.Rows.Count - 1].Cells[3];
+                DataGridViewCheckBoxCell chkCell = cell as DataGridViewCheckBoxCell;
+                chkCell.Value = false;
+                chkCell.FlatStyle = FlatStyle.Flat;
+                chkCell.Style.ForeColor = Color.DarkGray;
+                chkCell.Style.BackColor = Color.DarkGray;
+                cell.ReadOnly = true;
+            }
+
+            //Find associated break-end-mark for next mark.
+            if (this.associatedBreak != null && this.associatedBreak.endMark == this.actualIndex && TimeTracking.marks[this.associatedBreak.startMark].removed)
+            {
+                TimeTracking.breakingTimeRemoved += (TimeTracking.marks[this.associatedBreak.endMark].time - TimeTracking.marks[this.associatedBreak.startMark].time);
+            } else if (this.associatedBreak != null && TimeTracking.marks[this.associatedBreak.startMark].actualIndex == this.actualIndex)
+            {
+                //It's a start mark.
+                if (this.removed)
+                {
+                    TimeTracking.mainInstance.dgv_marks.Rows[this.localIndex - 1].Cells[3].Value = true;
+                }
+            }
+
         }
 
-       
+
     }
 }

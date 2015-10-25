@@ -204,6 +204,35 @@ namespace GamingRecorderAssistant
         {
 
         }
+
+        public void dgv_marks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int currentIndex = dgv_marks.CurrentRow.Index;
+            if (dgv_marks.CurrentCell == dgv_marks.Rows[dgv_marks.CurrentRow.Index].Cells["Removed"])
+            {
+                DataGridViewCheckBoxCell checkbox = (DataGridViewCheckBoxCell)dgv_marks.CurrentCell;
+                
+                bool isChecked = (bool)checkbox.EditedFormattedValue;
+                
+                TimeTracking.marks[dgv_marks.CurrentRow.Index].removed = Convert.ToBoolean(isChecked);
+
+                
+
+                //Tell the system that the mark was removed.
+                //MessageBox.Show(Convert.ToString(TimeTracking.marks[dgv_marks.CurrentRow.Index].timeStamp)); 
+                TimeTracking.redrawMarks();
+                dgv_marks.Rows[currentIndex].Selected = true;
+            }
+            
+            
+        }
+
+        private void dgv_marks_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        
     }
 
 
