@@ -29,28 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_about));
-            this.pb_gra_logo = new System.Windows.Forms.PictureBox();
             this.rtb_about = new System.Windows.Forms.RichTextBox();
             this.la_version = new System.Windows.Forms.Label();
             this.la_version_exp = new System.Windows.Forms.Label();
+            this.pb_gra_logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gra_logo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pb_gra_logo
-            // 
-            this.pb_gra_logo.Image = global::GamingRecorderAssistant.Properties.Resources.gra_logo_526;
-            this.pb_gra_logo.Location = new System.Drawing.Point(177, 13);
-            this.pb_gra_logo.Margin = new System.Windows.Forms.Padding(4);
-            this.pb_gra_logo.Name = "pb_gra_logo";
-            this.pb_gra_logo.Size = new System.Drawing.Size(200, 200);
-            this.pb_gra_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_gra_logo.TabIndex = 3;
-            this.pb_gra_logo.TabStop = false;
             // 
             // rtb_about
             // 
             this.rtb_about.Location = new System.Drawing.Point(12, 220);
             this.rtb_about.Name = "rtb_about";
+            this.rtb_about.ReadOnly = true;
             this.rtb_about.Size = new System.Drawing.Size(538, 253);
             this.rtb_about.TabIndex = 4;
             this.rtb_about.Text = resources.GetString("rtb_about.Text");
@@ -74,6 +64,17 @@
             this.la_version_exp.Size = new System.Drawing.Size(63, 17);
             this.la_version_exp.TabIndex = 6;
             this.la_version_exp.Text = "Version";
+            // 
+            // pb_gra_logo
+            // 
+            this.pb_gra_logo.Image = global::GamingRecorderAssistant.Properties.Resources.gra_logo_526;
+            this.pb_gra_logo.Location = new System.Drawing.Point(177, 13);
+            this.pb_gra_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.pb_gra_logo.Name = "pb_gra_logo";
+            this.pb_gra_logo.Size = new System.Drawing.Size(200, 200);
+            this.pb_gra_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_gra_logo.TabIndex = 3;
+            this.pb_gra_logo.TabStop = false;
             // 
             // frm_about
             // 

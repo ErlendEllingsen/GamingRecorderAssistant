@@ -230,10 +230,10 @@
             // 
             // menu_file_programSettings
             // 
-            this.menu_file_programSettings.Enabled = false;
             this.menu_file_programSettings.Name = "menu_file_programSettings";
             this.menu_file_programSettings.Size = new System.Drawing.Size(197, 26);
             this.menu_file_programSettings.Text = "Program Options";
+            this.menu_file_programSettings.Click += new System.EventHandler(this.menu_file_programSettings_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -325,7 +325,7 @@
             this.panel1.Controls.Add(this.la_status_tracking);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 28);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 149);
             this.panel1.TabIndex = 14;
@@ -347,7 +347,7 @@
             // 
             this.pictureBox1.Image = global::GamingRecorderAssistant.Properties.Resources.gra_logo_526;
             this.pictureBox1.Location = new System.Drawing.Point(907, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(148, 137);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -368,7 +368,7 @@
             this.Removed});
             this.dgv_marks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_marks.Location = new System.Drawing.Point(0, 177);
-            this.dgv_marks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_marks.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_marks.MultiSelect = false;
             this.dgv_marks.Name = "dgv_marks";
             this.dgv_marks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -376,7 +376,6 @@
             this.dgv_marks.Size = new System.Drawing.Size(1059, 169);
             this.dgv_marks.TabIndex = 15;
             this.dgv_marks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_marks_CellContentClick);
-            this.dgv_marks.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_marks_CellEndEdit);
             // 
             // Nr
             // 
@@ -435,10 +434,10 @@
             this.ForeColor = System.Drawing.SystemColors.Highlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu_main;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "GRA - Gaming Recording Assistant";
+            this.Text = "GRA - Gaming Recorder Assistant";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_main_FormClosing);
             this.Load += new System.EventHandler(this.frm_main_Load);
             this.menu_main.ResumeLayout(false);

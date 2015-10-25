@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -24,10 +25,27 @@ namespace GamingRecorderAssistant
 
         private void frm_main_Load(object sender, EventArgs e)
         {
-            RegisterHotKey(Handle, 1, MOD_ALT + MOD_CONTROL + MOD_SHIFT, (int)Keys.X);
-            RegisterHotKey(Handle, 2, MOD_ALT + MOD_CONTROL + MOD_SHIFT, (int)Keys.Y);
-            RegisterHotKey(Handle, 3, 0, (int)Keys.NumPad1);
-            RegisterHotKey(Handle, 4, 0, (int)Keys.NumPad2);
+            //Load program settings file.
+            if (!File.Exists(Application.UserAppDataPath + "\\GamingRecorderAssistant.gracfg")) {
+                TimeTracking.programConfig = new programConfig();
+            } else {
+                //The program file exists, load the program config.
+                string configContent = "";
+                using (StreamReader sr = new StreamReader(Application.UserAppDataPath + "\\GamingRecorderAssistant.gracfg"))
+                {
+                    configContent = sr.ReadToEnd();
+                }
+
+                programConfig loadedConfig = (programConfig)programConfig.DeserializeObject<programConfig>(configContent);
+                TimeTracking.programConfig = loadedConfig;
+                //Config loaded.
+
+            }
+
+
+            RegisterHotKey(Handle, 1, TimeTracking.programConfig.keyBindModifierSumRecording, TimeTracking.programConfig.keyBindSumRecording);
+            RegisterHotKey(Handle, 2, TimeTracking.programConfig.keyBindModifierSumBreak, TimeTracking.programConfig.keyBindSumBreak);
+            
 
 
             TimeTracking.newProject();
@@ -45,22 +63,22 @@ namespace GamingRecorderAssistant
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
 
-        const int MOD_ALT = 0x0001;
-        const int MOD_CONTROL = 0x0002;
-        const int MOD_SHIFT = 0x0004;
-        const int WM_HOTKEY = 0x0312;
+        public const int MOD_ALT = 0x0001;
+        public const int MOD_CONTROL = 0x0002;
+        public const int MOD_SHIFT = 0x0004;
+        public const int WM_HOTKEY = 0x0312;
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
-                MessageBox.Show("Hotkey X pressed.");
+            /*if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
+               MessageBox.Show("Hotkey X pressed.");
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
                 MessageBox.Show("Hotkey Y pressed.");
-
+           */
 
 
             //START/STOP TRACKING
-            if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
             {
                 //NUMPAD1
                 if (TimeTracking.currentTrackingState == TimeTracking.timeTrackingStates.inactive)
@@ -73,7 +91,7 @@ namespace GamingRecorderAssistant
             }
 
             //BREAKS!
-            if (m.Msg == WM_HOTKEY && (int)m.WParam == 4)
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
             {
                 if (TimeTracking.currentlyBreaking)
                 {
@@ -196,8 +214,17 @@ namespace GamingRecorderAssistant
             TimeTracking.settingsInstance = new frm_settings();
             TimeTracking.settingsInstance.Show();
 
+        }
 
+        private void menu_file_programSettings_Click(object sender, EventArgs e)
+        {
+            if (TimeTracking.programSettingsInstance != null && TimeTracking.programSettingsInstance.Visible)
+            {
+                TimeTracking.programSettingsInstance.Close();
+            }
 
+            TimeTracking.programSettingsInstance = new frm_programSettings();
+            TimeTracking.programSettingsInstance.Show();
         }
 
         private void menu_precut_set_Click(object sender, EventArgs e)
@@ -224,11 +251,6 @@ namespace GamingRecorderAssistant
                 dgv_marks.Rows[currentIndex].Selected = true;
             }
             
-            
-        }
-
-        private void dgv_marks_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
             
         }
 

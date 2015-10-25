@@ -29,7 +29,10 @@ namespace GamingRecorderAssistant
         //Important vars
         public static frm_main mainInstance = null;
         public static frm_settings settingsInstance = null;
+        public static frm_programSettings programSettingsInstance = null;
         public static bool settingsShown = false;
+
+        public static programConfig programConfig = null;
         public static config projectConfig = null;
 
         //Timetracking states
