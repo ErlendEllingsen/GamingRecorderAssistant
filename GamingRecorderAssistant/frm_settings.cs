@@ -78,6 +78,7 @@ namespace GamingRecorderAssistant
                 return;
             }
 
+
             //Convert to totalSeconds
             precutTotalSeconds = (hours * 60 * 60) + (minutes * 60) + seconds;
             TimeTracking.projectConfig.precutTimer = precutTotalSeconds;
