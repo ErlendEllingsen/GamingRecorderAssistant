@@ -14,7 +14,9 @@ In the configuration-window you are able to set the hotkeys that the program use
 
 INSTALLATION
 --------------
-Currently there is no release, however you can clone this repository and compile the program if you want! A release should be out shortly.
+Version *1.0 - Caramel Popcorn* is now available for download!
+See the releases page for the last release.
+https://github.com/Erlendftw/GamingRecorderAssistant/releases/tag/1.0.0.0
 
 LICENSE
 --------------
