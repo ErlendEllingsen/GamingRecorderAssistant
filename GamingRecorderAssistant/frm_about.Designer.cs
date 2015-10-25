@@ -33,6 +33,7 @@
             this.la_version = new System.Windows.Forms.Label();
             this.la_version_exp = new System.Windows.Forms.Label();
             this.pb_gra_logo = new System.Windows.Forms.PictureBox();
+            this.la_versionName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gra_logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,22 @@
             this.pb_gra_logo.TabIndex = 3;
             this.pb_gra_logo.TabStop = false;
             // 
+            // la_versionName
+            // 
+            this.la_versionName.AutoSize = true;
+            this.la_versionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.la_versionName.Location = new System.Drawing.Point(9, 30);
+            this.la_versionName.Name = "la_versionName";
+            this.la_versionName.Size = new System.Drawing.Size(95, 17);
+            this.la_versionName.TabIndex = 7;
+            this.la_versionName.Text = "Version name";
+            // 
             // frm_about
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 485);
+            this.Controls.Add(this.la_versionName);
             this.Controls.Add(this.la_version_exp);
             this.Controls.Add(this.la_version);
             this.Controls.Add(this.rtb_about);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.RichTextBox rtb_about;
         private System.Windows.Forms.Label la_version;
         private System.Windows.Forms.Label la_version_exp;
+        private System.Windows.Forms.Label la_versionName;
     }
 }

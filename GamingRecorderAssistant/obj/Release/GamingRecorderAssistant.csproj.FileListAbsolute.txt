@@ -1,0 +1,13 @@
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Release\GamingRecorderAssistant.exe.config
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Release\GamingRecorderAssistant.exe
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Release\GamingRecorderAssistant.pdb
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Release\Newtonsoft.Json.dll
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\bin\Release\Newtonsoft.Json.xml
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.frm_about.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.frm_main.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.frm_programSettings.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.frm_settings.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.Properties.Resources.resources
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.csproj.GenerateResource.Cache
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.exe
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.pdb

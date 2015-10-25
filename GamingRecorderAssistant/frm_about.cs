@@ -13,6 +13,14 @@ namespace GamingRecorderAssistant
 {
     public partial class frm_about : Form
     {
+        public Dictionary<string, string> versionNames = new Dictionary<string, string>(){
+            {"1.0", "Caramel Popcorn"},
+            {"1.1", "Soledad Almonds"},
+            {"1.2", "Multigrain Waffle"},
+            {"1.3", "Aged Gouda" },
+            {"1.4", "Handful of grapes" }
+        };
+
         public frm_about()
         {
             InitializeComponent();
@@ -20,6 +28,9 @@ namespace GamingRecorderAssistant
 
         private void frm_about_Load(object sender, EventArgs e)
         {
+            string versionName = versionNames[Application.ProductVersion.Substring(0, 3)];
+            la_versionName.Text = versionName;
+
             la_version.Text = Application.ProductVersion;
         }
 
