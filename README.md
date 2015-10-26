@@ -12,11 +12,15 @@ CONFIGURATION
 
 In the configuration-window you are able to set the hotkeys that the program uses. Normally the best option would be to use the same hotkeys as your recording-software (e.g. Open Broadcaster Software or FRAPS use).
 
-INSTALLATION
+DOWNLOAD/INSTALLATION
 --------------
 Version *1.0 - Caramel Popcorn* is now available for download!
 See the releases page for the last release.
 https://github.com/Erlendftw/GamingRecorderAssistant/releases/tag/1.0.0.0
+
+SCREENSHOTS
+--------------
+![GRA Main Window Screenshot](https://gyazo.com/e918704dec102327ae26b329311f1ffe)
 
 LICENSE
 --------------
