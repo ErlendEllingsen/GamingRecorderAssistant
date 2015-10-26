@@ -20,7 +20,7 @@ https://github.com/Erlendftw/GamingRecorderAssistant/releases/tag/1.0.0.0
 
 SCREENSHOTS
 --------------
-![GRA Main Window Screenshot](https://gyazo.com/e918704dec102327ae26b329311f1ffe)
+![GRA Main Window Screenshot](https://i.gyazo.com/e918704dec102327ae26b329311f1ffe.png)
 
 LICENSE
 --------------
