@@ -369,7 +369,7 @@ namespace GamingRecorderAssistant
         public static void addPOI()
         {
             projectConfig.poiIndex++;
-            timeTrackingMark newPOIMark = new timeTrackingMark(totalTimer, "Point of interest #" + Convert.ToString(projectConfig.poiIndex), true);
+            timeTrackingMark newPOIMark = new timeTrackingMark(totalTimer, "Point of interest #" + Convert.ToString(projectConfig.poiIndex), false);
         }
 
         #endregion
