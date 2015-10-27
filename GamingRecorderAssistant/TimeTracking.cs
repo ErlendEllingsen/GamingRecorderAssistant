@@ -366,6 +366,12 @@ namespace GamingRecorderAssistant
             mainInstance.la_status_break.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
         }
 
+        public static void addPOI()
+        {
+            projectConfig.poiIndex++;
+            timeTrackingMark newPOIMark = new timeTrackingMark(totalTimer, "Point of interest #" + Convert.ToString(projectConfig.poiIndex), true);
+        }
+
         #endregion
 
         #region GUI Vars

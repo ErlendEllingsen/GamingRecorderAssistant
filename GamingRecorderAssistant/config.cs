@@ -27,9 +27,12 @@ namespace GamingRecorderAssistant
         public int breakingTimeAccumulated = 0;
         public List<timeTrackingBreak> previousBreaks = new List<timeTrackingBreak>();
         public int breakIndex = 0;
-        
+
         //Mark vars
-        public  List<timeTrackingMark> marks = new List<timeTrackingMark>();
+        //Mark: point of interest
+        public int poiIndex = 0;
+
+        public List<timeTrackingMark> marks = new List<timeTrackingMark>();
 
 
         #endregion 

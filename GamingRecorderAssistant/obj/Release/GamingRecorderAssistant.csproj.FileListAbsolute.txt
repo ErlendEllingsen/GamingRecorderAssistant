@@ -11,3 +11,4 @@ C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\Ga
 C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.csproj.GenerateResource.Cache
 C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.exe
 C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.pdb
+C:\Users\Erlend\Documents\Visual Studio 2015\Projects\GamingRecorderAssistant\GamingRecorderAssistant\obj\Release\GamingRecorderAssistant.csprojResolveAssemblyReference.cache

@@ -45,7 +45,8 @@ namespace GamingRecorderAssistant
 
             RegisterHotKey(Handle, 1, TimeTracking.programConfig.keyBindModifierSumRecording, TimeTracking.programConfig.keyBindSumRecording);
             RegisterHotKey(Handle, 2, TimeTracking.programConfig.keyBindModifierSumBreak, TimeTracking.programConfig.keyBindSumBreak);
-            
+            RegisterHotKey(Handle, 3, TimeTracking.programConfig.keyBindModifierSumPOI, TimeTracking.programConfig.keyBindSumPOI);
+
 
 
             TimeTracking.newProject();
@@ -104,6 +105,11 @@ namespace GamingRecorderAssistant
 
 
             //MARKS!
+            //Mark: POI
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
+            {
+                TimeTracking.addPOI();
+            }
 
             base.WndProc(ref m);
         }

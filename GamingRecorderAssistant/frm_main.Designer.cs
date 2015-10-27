@@ -46,8 +46,6 @@
             this.menu_file_load = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_file_save = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_sep_file = new System.Windows.Forms.ToolStripSeparator();
-            this.menu_precut_set = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_sep_precut = new System.Windows.Forms.ToolStripSeparator();
             this.menu_file_projectSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_file_programSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,8 +170,6 @@
             this.menu_file_load,
             this.menu_file_save,
             this.menu_sep_file,
-            this.menu_precut_set,
-            this.menu_sep_precut,
             this.menu_file_projectSettings,
             this.menu_file_programSettings});
             this.menu_file.Name = "menu_file";
@@ -208,18 +204,6 @@
             // 
             this.menu_sep_file.Name = "menu_sep_file";
             this.menu_sep_file.Size = new System.Drawing.Size(194, 6);
-            // 
-            // menu_precut_set
-            // 
-            this.menu_precut_set.Name = "menu_precut_set";
-            this.menu_precut_set.Size = new System.Drawing.Size(197, 26);
-            this.menu_precut_set.Text = "Set pre-cut";
-            this.menu_precut_set.Click += new System.EventHandler(this.menu_precut_set_Click);
-            // 
-            // menu_sep_precut
-            // 
-            this.menu_sep_precut.Name = "menu_sep_precut";
-            this.menu_sep_precut.Size = new System.Drawing.Size(194, 6);
             // 
             // menu_file_projectSettings
             // 
@@ -484,8 +468,6 @@
         private System.Windows.Forms.OpenFileDialog ofd_openTracking;
         private System.Windows.Forms.SaveFileDialog sfd_saveTracking;
         private System.Windows.Forms.ToolStripSeparator menu_sep_file;
-        private System.Windows.Forms.ToolStripMenuItem menu_precut_set;
-        private System.Windows.Forms.ToolStripSeparator menu_sep_precut;
     }
 }
 
