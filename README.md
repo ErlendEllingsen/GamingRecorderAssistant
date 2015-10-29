@@ -16,7 +16,7 @@ DOWNLOAD/INSTALLATION
 --------------
 Version *1.0 - Caramel Popcorn* is now available for download!
 See the releases page for the last release.
-https://github.com/Erlendftw/GamingRecorderAssistant/releases/tag/1.0.0.0
+https://github.com/Erlendftw/GamingRecorderAssistant/releases
 
 SCREENSHOTS
 --------------
